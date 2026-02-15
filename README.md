@@ -1,2 +1,2 @@
-# Stat-Quiz
+# Python-Quiz
 Quiz3of stat
