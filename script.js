@@ -1,441 +1,331 @@
-// ==========================================
-// Python Quiz (All Questions - Renumbered)
-// With explanation + curriculum page number
-// Source: "الدرس الأول في المقرر بايثون1" (PDF)
-// Total: 39
-// ==========================================
+/* =========================
+   Quiz Engine (RTL / Arabic)
+   - Instant correction + colors
+   - Show score first
+   - Explanation + page reference (from syllabus when available)
+   - Final score at end
+   - Anonymous test-taker: Session Code only
+   ========================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+"use strict";
 
-  const questions = [
-    // 1
-    {
-      question: "1) أي من المكونات التالية يعتبر قلب تنفيذ أوامر البرامج؟",
-      answers: ["RAM", "CPU", "الذاكرة الثانوية", "أجهزة الإدخال"],
-      correct: 1,
-      explanation: "وحدة المعالجة المركزية (CPU) هي قلب تنفيذ أوامر البرامج وتقوم بالحسابات واتخاذ القرارات.",
-      page: 6
-    },
-    // 2
-    {
-      question: "2) ما الرمز المستخدم لكتابة التعليقات في بايثون؟",
-      answers: ["//", "/*", "#", "@"],
-      correct: 2,
-      explanation: "التعليقات في بايثون تبدأ بالرمز #.",
-      page: 25
-    },
-    // 3
-    {
-      question: "3) الفرق بين المفسر والمترجم هو:",
-      answers: [
-        "المفسر يترجم كاملاً",
-        "المفسر ينفذ سطرًا سطرًا والمترجم يترجم كامل البرنامج قبل التنفيذ",
-        "لا يوجد فرق",
-        "المترجم ينفذ سطرًا سطرًا"
-      ],
-      correct: 1,
-      explanation: "المنهج يوضح أن التحويل للآلة يتم عبر المفسر Interpreter أو المترجم Compiler؛ المفسر ينفذ تدريجيًا والمترجم يترجم كامل البرنامج ثم يُنفّذ.",
-      page: 12
-    },
-    // 4
-    {
-      question: "4) للفصل بين أوامر في نفس السطر نستخدم:",
-      answers: [":", ";", ",", "!"],
-      correct: 1,
-      explanation: "إذا أردت كتابة أكثر من أمر في نفس السطر، ضع فاصلة منقوطة ; بين الأوامر.",
-      page: 28
-    },
-    // 5
-    {
-      question: "5) مثال على خطأ دلالي (Semantic) هو:",
-      answers: [
-        "primt بدل print",
-        "متغير غير معرف",
-        "البرنامج يعمل لكن النتيجة غير المقصودة",
-        "نسيان قوس"
-      ],
-      correct: 2,
-      explanation: "الخطأ الدلالي: البرنامج يعمل ولكن النتيجة ليست المقصودة.",
-      page: 30
-    },
-    // 6
-    {
-      question: "6) هل Note و note نفس المتغير؟",
-      answers: ["صح", "خطأ"],
-      correct: 1,
-      explanation: "بايثون تميز بين الأحرف الكبيرة والصغيرة؛ Note و note ليسا شيئًا واحدًا.",
-      page: 27
-    },
-    // 7
-    {
-      question: "7) الدالة input() تعيد:",
-      answers: ["Integer", "String", "Boolean", "لا شيء"],
-      correct: 1,
-      explanation: "الدالة input() تقرأ إدخال المستخدم وتُعيده كنص (String) افتراضيًا.",
-      page: 26
-    },
-    // 8
-    {
-      question: "8) وحدة تنفيذ التعليمات هي:",
-      answers: ["RAM", "CPU", "الشاشة", "لوحة المفاتيح"],
-      correct: 1,
-      explanation: "CPU تنفذ التعليمات بسرعة عالية جدًا وهي قلب تنفيذ أوامر البرامج.",
-      page: 6
-    },
-    // 9
-    {
-      question: "9) من أجهزة الإدخال:",
-      answers: ["الطابعة", "الشاشة", "لوحة المفاتيح", "السماعات"],
-      correct: 2,
-      explanation: "أجهزة الإدخال تشمل لوحة المفاتيح والفأرة والميكروفون وشاشة اللمس وغيرها.",
-      page: 6
-    },
-    // 10
-    {
-      question: "10) وظيفة print():",
-      answers: ["قراءة إدخال", "حساب", "طباعة مخرجات", "تخزين"],
-      correct: 2,
-      explanation: "print دالة مدمجة تطبع المخرجات على الشاشة.",
-      page: 25
-    },
-    // 11
-    {
-      question: "11) الدالة المستخدمة لقراءة الإدخال:",
-      answers: ["print()", "read()", "input()", "write()"],
-      correct: 2,
-      explanation: "الدالة input() هي التي تقرأ إدخال المستخدم من لوحة المفاتيح.",
-      page: 26
-    },
-    // 12
-    {
-      question: "12) لغة الآلة تتكون من:",
-      answers: ["حروف", "رموز", "0 و1", "كلمات"],
-      correct: 2,
-      explanation: "لغة الآلة (Machine language) تتكون من رمزين فقط: 0 و 1.",
-      page: 9
-    },
-    // 13
-    {
-      question: "13) RAM تعتبر:",
-      answers: ["دائمة", "مؤقتة", "دائمة ومؤقتة", "لا تخزن"],
-      correct: 1,
-      explanation: "الذاكرة الرئيسية RAM تخزين مؤقت ومحتواها يزول بانقطاع الطاقة.",
-      page: 6
-    },
-    // 14
-    {
-      question: "14) المقصود بالخوارزمية:",
-      answers: ["جهاز", "لغة", "خطوات لحل مشكلة", "ذاكرة"],
-      correct: 2,
-      explanation: "الخوارزميات: سلسلة من الخطوات التي يمكن اتباعها لإيجاد الحل.",
-      page: 8
-    },
-    // 15
-    {
-      question: "15) لغة عالية المستوى:",
-      answers: ["لغة الآلة", "Assembly", "Python", "Binary"],
-      correct: 2,
-      explanation: "المنهج يذكر أن بايثون من لغات البرمجة عالية المستوى.",
-      page: 10
-    },
-    // 16
-    {
-      question: "16) المفسر يقوم بـ:",
-      answers: ["ترجمة كاملة", "تنفيذ سطر بسطر", "تخزين", "حذف أخطاء"],
-      correct: 1,
-      explanation: "المفسر Interpreter يقرأ/يفسر التعليمة ويقوم بتنفيذها مباشرة (تدريجيًا).",
-      page: 12
-    },
-    // 17
-    {
-      question: "17) من أنماط بناء البرامج:",
-      answers: ["التسلسل", "الشرط", "التكرار", "جميع ما سبق"],
-      correct: 3,
-      explanation: "الأنماط الأساسية لبناء البرامج تشمل التسلسل والشرط والتكرار.",
-      page: 4
-    },
-    // 18
-    {
-      question: "18) كتابة Print بدل print ينتج:",
-      answers: ["SyntaxError", "NameError", "Logical Error", "TypeError"],
-      correct: 1,
-      explanation: "بايثون تميز بين الأحرف الكبيرة والصغيرة؛ Print اسم مختلف عن print وغالبًا يُعامل كاسم غير معرّف ⇒ NameError.",
-      page: 27
-    },
-    // 19
-    {
-      question: "19) كتابة primt بدل print ينتج:",
-      answers: ["يعمل طبيعي", "SyntaxError", "NameError", "لا شيء"],
-      correct: 1,
-      explanation: "المنهج نصّ صراحة: primt بدل print مثال على SyntaxError.",
-      page: 30
-    },
-    // 20
-    {
-      question: "20) بايثون:",
-      answers: ["لا تفرق بين الأحرف", "تفرق بين الأحرف", "ويندوز فقط", "منخفضة المستوى"],
-      correct: 1,
-      explanation: "بايثون Case Sensitive: تميز بين الأحرف الكبيرة والصغيرة.",
-      page: 27
-    },
-    // 21
-    {
-      question: "21) مثال على البرمجة الإجرائية:",
-      answers: ["كائنات", "وراثة", "خطوات متسلسلة", "تغليف"],
-      correct: 2,
-      explanation: "المنهج يصنف البرمجة الإجرائية بأنها تقوم على خطوات/إجراءات متسلسلة لحل المشكلة.",
-      page: 10
-    },
-    // 22
-    {
-      question: "22) استخدام متغير قبل تعريفه يؤدي إلى:",
-      answers: ["NameError", "SyntaxError", "Logical Error", "TypeError"],
-      correct: 0,
-      explanation: "NameError: استخدام اسم متغير لم يُعرّف بعد.",
-      page: 30
-    },
-    // 23
-    {
-      question: "23) المترجم (Compiler):",
-      answers: ["ينفذ سطر بسطر", "لا يحول للآلة", "يترجم كامل البرنامج", "لبايثون فقط"],
-      correct: 2,
-      explanation: "المنهج يذكر أن التحويل للآلة يتم بالمترجم Compiler أو المفسر Interpreter؛ المترجم يترجم البرنامج كاملًا قبل التنفيذ.",
-      page: 12
-    },
-    // 24
-    {
-      question: "24) استخدام ; في x=1 ; y=2 يعني:",
-      answers: ["تعريف", "فصل أوامر", "إنهاء", "طباعة"],
-      correct: 1,
-      explanation: "الفاصلة المنقوطة ; تستخدم لفصل أكثر من أمر في نفس السطر (مثال: x=1;y=2;z=3).",
-      page: 28
-    },
-    // 25
-    {
-      question: "25) من الأنماط الأساسية:",
-      answers: ["التكرار", "الطباعة", "التخزين", "الشبكات"],
-      correct: 0,
-      explanation: "التكرار من الأنماط الأساسية لبناء البرامج.",
-      page: 4
-    },
-    // 26
-    {
-      question: "26) من أجهزة الإخراج:",
-      answers: ["ميكروفون", "فأرة", "شاشة", "لوحة مفاتيح"],
-      correct: 2,
-      explanation: "المخرجات تشمل عرض النتائج على الشاشة وتشغيل الصوت والكتابة إلى ملفات.",
-      page: 6
-    },
-    // 27
-    {
-      question: "27) الهدف من التعليقات:",
-      answers: ["تسريع", "شرح الكود", "إصلاح أخطاء", "تخزين"],
-      correct: 1,
-      explanation: "التعليقات تُستخدم لشرح الكود للمبرمج (لا تُنفّذ).",
-      page: 25
-    },
-    // 28
-    {
-      question: "28) رمز التعليق:",
-      answers: ["//", "/**/", "#", "--"],
-      correct: 2,
-      explanation: "التعليقات في بايثون تبدأ بالرمز #.",
-      page: 25
-    },
-    // 29
-    {
-      question: "29) لغة منخفضة المستوى:",
-      answers: ["Python", "Java", "Assembly", "JavaScript"],
-      correct: 2,
-      explanation: "المنهج يذكر أن اللغات منخفضة المستوى تشمل لغة التجميع (Assembly) ولغة الآلة.",
-      page: 10
-    },
-    // 30
-    {
-      question: "30) بايثون لغة عالية المستوى لأنها:",
-      answers: ["قريبة من الآلة", "صعبة", "قريبة من الإنسان", "لنظام واحد"],
-      correct: 2,
-      explanation: "اللغات عالية المستوى أقرب لقراءة الإنسان من لغة الآلة، وبايثون مثال عليها ضمن تصنيف المنهج.",
-      page: 10
-    },
-    // 31
-    {
-      question: "31) input() يخزن القيمة كنوع:",
-      answers: ["Integer", "Float", "String", "Boolean"],
-      correct: 2,
-      explanation: "input() تعيد النص كنص String افتراضيًا ويُخزن مثلًا في متغير name.",
-      page: 26
-    },
-    // 32
-    {
-      question: "32) مثال على الذاكرة الثانوية:",
-      answers: ["RAM", "القرص الصلب", "المسجلات", "المعالج"],
-      correct: 1,
-      explanation: "الذاكرة الثانوية تحتفظ بالبيانات عند إيقاف التشغيل مثل الأقراص وUSB (تخزين دائم).",
-      page: 6
-    },
-    // 33
-    {
-      question: "33) مثال على التكرار:",
-      answers: ["تنفيذ مرة", "شرط", "إعادة عدة مرات", "تعريف متغير"],
-      correct: 2,
-      explanation: "التكرار يعني إعادة تنفيذ أوامر عدة مرات.",
-      page: 4
-    },
-    // 34
-    {
-      question: "34) السهم ^ في رسالة الخطأ يشير إلى:",
-      answers: ["بداية", "نهاية", "موقع الخطأ", "اسم متغير"],
-      correct: 2,
-      explanation: "المنهج ينصح: السهم يشير غالبًا إلى موضع المشكلة في السطر.",
-      page: 30
-    },
-    // 35
-    {
-      question: "35) الشبكة تعتبر:",
-      answers: ["ذاكرة", "تبادل معلومات", "جزء معالج", "إدخال"],
-      correct: 1,
-      explanation: "الشبكات لتبادل البيانات والموارد ويمكن النظر إليها كامتداد للتخزين.",
-      page: 6
-    },
-    // 36
-    {
-      question: "36) امتداد ملف بايثون:",
-      answers: [".txt", ".doc", ".py", ".exe"],
-      correct: 2,
-      explanation: "المنهج يذكر مثال إنشاء ملف hello.py لحفظ سكربت بايثون.",
-      page: 25
-    },
-    // 37 (كان في الملف كس40)
-    {
-      question: "37) الهدف من الخوارزميات:",
-      answers: ["تخزين", "كتابة آلة", "تنظيم الحل", "تسريع المعالج"],
-      correct: 2,
-      explanation: "الخوارزميات هي تنظيم خطوات حل المشكلة للوصول إلى الحل المطلوب.",
-      page: 8
-    },
-    // 38 (كان في الملف كس41)
-    {
-      question: "38) عند انقطاع الكهرباء RAM:",
-      answers: ["تبقى", "تحذف", "تنتقل", "تتحول"],
-      correct: 1,
-      explanation: "RAM تخزين مؤقت ومحتواها يزول بانقطاع الطاقة.",
-      page: 6
-    },
-    // 39 (كان في الملف كس42)
-    {
-      question: "39) أي مما يلي ليس من أنماط بناء البرامج الأساسية؟",
-      answers: ["التسلسل", "الشرط", "التكرار", "التجميع"],
-      correct: 3,
-      explanation: "الأنماط الأساسية حسب المنهج: التسلسل والشرط والتكرار (أما التجميع فليس نمط بناء).",
-      page: 4
-    }
-  ];
+// عناصر الصفحة (مطابقة لـ index.html عندك)
+const elQuestion = document.getElementById("question");
+const elAnswers = document.getElementById("answers");
+const elResult = document.getElementById("result");
+const btnNext = document.getElementById("nextBtn");
 
-  let current = 0;
-  let score = 0;
-  let answered = false;
+// حماية: لو العناصر غير موجودة، لا ينهار السكربت
+if (!elQuestion || !elAnswers || !elResult || !btnNext) {
+  console.error("Missing required HTML elements (question/answers/result/nextBtn).");
+}
 
-  const questionEl = document.getElementById("question");
-  const answersEl = document.getElementById("answers");
-  const resultEl = document.getElementById("result");
-  const nextBtn = document.getElementById("nextBtn");
+// ====== رمز جلسة (بدون اسم) ======
+const sessionCode = "S-" + Math.random().toString(36).slice(2, 8).toUpperCase();
 
-  function loadQuestion() {
-    answered = false;
-    nextBtn.disabled = true;
-    answersEl.innerHTML = "";
+// ====== بنك الأسئلة ======
+// ملاحظة مهمة:
+// - أنا صحّحت (Networking) بناءً على المنهج: الشبكة مكوّن مستقل وليست ذاكرة.
+// - بعض الأسئلة العامة قد تكون “معرفة بايثون” ولم أجد لها نصًا حرفيًا في صفحات الدرس الأول التي ظهرت لي أثناء البحث.
+//   عندما لا يوجد نص مباشر: أضع page: null وnote توضيحية.
+const questions = [
+  // ========== من منهج “مكونات الحاسب” (تأكيد نصي في الدرس) ==========
+  {
+    q: "أي عبارة تصف (CPU) في مكونات الحاسب؟",
+    choices: [
+      "هي وحدة التخزين الدائم",
+      "هي قلب تنفيذ أوامر البرامج وتقوم بالحسابات واتخاذ القرارات",
+      "هي وسيلة عرض النتائج فقط",
+      "هي شبكة لنقل البيانات"
+    ],
+    correct: 1,
+    explain: "المنهج يذكر أن المعالجة (CPU) تنفذ أوامر البرامج وتقوم بالحسابات واتخاذ القرارات.",
+    page: 6,
+    cite: "2"
+  },
+  {
+    q: "التخزين المؤقت (Memory) في المنهج يتميز بأنه:",
+    choices: [
+      "سريع وقريب من المعالج لكن محتواه يزول بانقطاع الطاقة",
+      "أبطأ لكنه يحتفظ بالبيانات بعد إيقاف التشغيل",
+      "هو شبكة لنقل البيانات",
+      "هو وحدة إخراج"
+    ],
+    correct: 0,
+    explain: "المنهج يذكر أن التخزين المؤقت سريع وقريب من المعالج لكنه يزول بانقطاع الطاقة.",
+    page: 6,
+    cite: "3"
+  },
+  {
+    q: "التخزين (Storage) في المنهج يتميز بأنه:",
+    choices: [
+      "يزول محتواه بانقطاع الطاقة",
+      "سريع جدًا وقريب من المعالج",
+      "أبطأ لكنه يحتفظ بالبيانات والبرامج عند إيقاف التشغيل",
+      "هو تنفيذ الأوامر داخل CPU"
+    ],
+    correct: 2,
+    explain: "المنهج يذكر أن التخزين أبطأ لكنه يحتفظ بالبيانات والبرامج عند إيقاف التشغيل.",
+    page: 6,
+    cite: "4"
+  },
+  {
+    q: "Networking في المنهج المقصود به:",
+    choices: [
+      "الذاكرة المؤقتة (Memory)",
+      "التواصل/نقل البيانات عبر شبكات متصلة (وقد يُنظر له كامتداد للتخزين/النقل)",
+      "وحدة إخراج",
+      "لغة برمجة"
+    ],
+    correct: 1,
+    explain: "المنهج يذكر Networking كاتصال/نقل بيانات عبر شبكات متصلة، وليس ذاكرة.",
+    page: 6,
+    cite: "5"
+  },
 
-    const q = questions[current];
-    questionEl.innerText = q.question;
+  // ========== خوارزميات / لغة الآلة / أنماط البرامج (موجودة بالمنهج) ==========
+  {
+    q: "ما المقصود بالخوارزمية؟",
+    choices: [
+      "لغة تتكون من 0 و1",
+      "سلسلة من الخطوات المنظمة لحل مشكلة",
+      "جهاز يقوم بالمعالجة",
+      "برنامج مكتوب بلغة الآلة"
+    ],
+    correct: 1,
+    explain: "المنهج يعرّف الخوارزمية بأنها سلسلة خطوات لحل مشكلة.",
+    page: 16,
+    cite: ""
+  },
+  {
+    q: "لغة الآلة تتكون من:",
+    choices: ["حروف وأرقام", "رموز خاصة", "0 و 1", "أوامر إنجليزية"],
+    correct: 2,
+    explain: "المنهج يذكر أن لغة الآلة ثنائية (0 و1).",
+    page: 17,
+    cite: "7"
+  },
+  {
+    q: "أي من التالي يُعد من أنماط بناء البرامج الأساسية؟",
+    choices: ["التسلسل", "الشرط", "التكرار", "جميع ما سبق"],
+    correct: 3,
+    explain: "المنهج يذكر الأنماط الثلاثة: التسلسل/الشرط/التكرار.",
+    page: 21,
+    cite: "8"
+  },
+  {
+    q: "الفرق الصحيح بين المترجم (Compiler) والمفسر (Interpreter) هو:",
+    choices: [
+      "المترجم يترجم البرنامج كاملاً دفعة واحدة ثم ينفذه، والمفسر ينفذ سطرًا سطرًا",
+      "المفسر يترجم البرنامج كاملاً دفعة واحدة",
+      "لا يوجد فرق بينهما",
+      "المفسر لا يحول إلى لغة الآلة"
+    ],
+    correct: 0,
+    explain: "المنهج يوضح أن الـ Compiler يترجم كامل البرنامج ثم ينفذه، بينما الـ Interpreter ينفذ سطرًا سطرًا.",
+    page: 19,
+    cite: ""
+  },
 
-    resultEl.innerHTML = `
-      <div style="text-align:right; line-height:1.8;">
-        <div style="font-size:18px;"><strong>الدرجة:</strong> ${score} / ${questions.length}</div>
-        <div style="margin-top:6px;">اختر إجابة لعرض التصحيح والشرح.</div>
-      </div>
-    `;
+  // ========== Google Colab (منهج) ==========
+  {
+    q: "ما هو Google Colab؟",
+    choices: [
+      "برنامج يتم تثبيته على الجهاز",
+      "بيئة برمجة جاهزة تعمل عبر المتصفح",
+      "لغة برمجة",
+      "نظام تشغيل"
+    ],
+    correct: 1,
+    explain: "المنهج يذكر أنه بيئة سحابية تعمل عبر المتصفح وتشبه Jupyter Notebook.",
+    page: 8,
+    cite: ""
+  },
+  {
+    q: "ما الرابط الصحيح للدخول إلى Google Colab؟",
+    choices: ["google.com", "python.org", "colab.research.google.com", "github.com"],
+    correct: 2,
+    explain: "مذكور نصًا في الدرس.",
+    page: 8,
+    cite: ""
+  },
 
-    q.answers.forEach((answer, index) => {
-      const btn = document.createElement("button");
-      btn.innerText = answer;
-      btn.classList.add("answer-btn");
-      btn.onclick = () => checkAnswer(index);
-      answersEl.appendChild(btn);
-    });
-
-    nextBtn.textContent = (current === questions.length - 1) ? "إنهاء الاختبار" : "السؤال التالي";
+  // ========== بايثون (منهج) ==========
+  {
+    q: "بايثون تميز بين الأحرف الكبيرة والصغيرة في أسماء المتغيرات (Case Sensitive).",
+    choices: ["صح", "خطأ"],
+    correct: 0,
+    explain: "المنهج يذكر صراحة: Python Case Sensitive.",
+    page: 34,
+    cite: "12"
+  },
+  {
+    q: "القيمة التي يرجعها input() في بايثون تكون من نوع:",
+    choices: ["int دائمًا", "float دائمًا", "string (نص)", "boolean"],
+    correct: 2,
+    explain: "المنهج يوضح أن input() يُرجع نصًا (string).",
+    page: 32,
+    cite: "13"
+  },
+  {
+    q: "كتابة print بهذه الطريقة primt تُسبب غالبًا:",
+    choices: ["SyntaxError", "NameError", "TypeError", "Logical Error"],
+    correct: 1,
+    explain: "هذا خطأ اسم (اسم دالة غير معروف)؛ لأن primt غير معرّفة (وليست خطأ صياغة).",
+    page: null,
+    cite: null,
+    note: "هذا استنتاج بايثون قياسي. الدرس عرض مثال TypeError/أمثلة أخطاء، لكن لم أعثر على نص حرفي عن primt تحديدًا أثناء البحث."
+  },
+  {
+    q: "عند كتابة Print بدل print في بايثون، نوع الخطأ غالبًا هو:",
+    choices: ["SyntaxError", "NameError", "TypeError", "Logical Error"],
+    correct: 1,
+    explain: "لأن بايثون Case Sensitive؛ و Print اسم مختلف عن print، فيظهر عادة NameError (اسم غير معرّف).",
+    page: 34,
+    cite: "14"
   }
+];
 
-  function checkAnswer(selected) {
-    if (answered) return;
-    answered = true;
+// ====== حالة الاختبار ======
+let current = 0;
+let score = 0;
+let answered = false;
 
-    const q = questions[current];
-    const correctIndex = q.correct;
+// ====== أدوات واجهة ======
+function clearAnswers() {
+  elAnswers.innerHTML = "";
+}
 
-    const buttons = document.querySelectorAll(".answer-btn");
-    buttons.forEach((btn, idx) => {
-      btn.disabled = true;
-      if (idx === correctIndex) btn.classList.add("correct");
-      if (idx === selected && idx !== correctIndex) btn.classList.add("wrong");
-    });
+function setResult(html) {
+  elResult.innerHTML = html;
+}
 
-    const isCorrect = (selected === correctIndex);
-    if (isCorrect) score++;
+function renderQuestion() {
+  if (!elQuestion || !elAnswers || !elResult || !btnNext) return;
 
-    resultEl.innerHTML = `
-      <div style="text-align:right; line-height:1.9;">
-        <div style="font-size:18px; margin-bottom:8px;">
-          <strong>الدرجة:</strong> ${score} / ${questions.length}
-        </div>
-        <div style="margin-bottom:6px;">${isCorrect ? "إجابة صحيحة ✅" : "إجابة خاطئة ❌"}</div>
-        <div><strong>الإجابة الصحيحة:</strong> ${q.answers[correctIndex]}</div>
-        <div style="margin-top:6px;"><strong>الشرح:</strong> ${q.explanation}</div>
-        <div style="margin-top:6px;"><strong>مرجع المنهج:</strong> صفحة ${q.page}</div>
-      </div>
+  answered = false;
+  btnNext.disabled = true;
+
+  clearAnswers();
+  setResult("");
+
+  const q = questions[current];
+
+  // عنوان السؤال + رقم + Session Code
+  elQuestion.innerHTML = `
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <div><b>السؤال ${current + 1} من ${questions.length}:</b> ${escapeHtml(q.q)}</div>
+      <div style="opacity:.85;font-size:.95em;">رمز الجلسة: <b>${sessionCode}</b></div>
+    </div>
+  `;
+
+  // أزرار الخيارات
+  q.choices.forEach((choice, idx) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "answer-btn";
+    btn.style.cssText = `
+      display:block;width:100%;text-align:right;
+      padding:12px 14px;margin:10px 0;border-radius:10px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);color:#fff;cursor:pointer;
+      font-size:1rem;
     `;
+    btn.textContent = choice;
+    btn.addEventListener("click", () => handleAnswer(idx));
+    elAnswers.appendChild(btn);
+  });
+}
 
-    nextBtn.disabled = false;
-  }
+function handleAnswer(selectedIdx) {
+  if (answered) return;
+  answered = true;
 
-  nextBtn.onclick = function () {
-    if (!answered) return;
+  const q = questions[current];
+  const buttons = Array.from(elAnswers.querySelectorAll("button"));
 
-    current++;
-    if (current < questions.length) {
-      loadQuestion();
-    } else {
-      showFinal();
+  // صح/خطأ وتلوين
+  buttons.forEach((b, idx) => {
+    b.disabled = true;
+    if (idx === q.correct) {
+      b.style.background = "rgba(46, 204, 113, .25)";
+      b.style.borderColor = "rgba(46, 204, 113, .75)";
     }
-  };
+    if (idx === selectedIdx && idx !== q.correct) {
+      b.style.background = "rgba(231, 76, 60, .25)";
+      b.style.borderColor = "rgba(231, 76, 60, .75)";
+    }
+  });
 
-  function showFinal() {
-    questionEl.innerText = "انتهى الاختبار 🎉";
-    answersEl.innerHTML = "";
-    nextBtn.style.display = "none";
+  const isCorrect = selectedIdx === q.correct;
+  if (isCorrect) score++;
 
-    const percent = Math.round((score / questions.length) * 100);
+  // الدرجة أولاً + شرح + صفحة
+  const pageText = q.page ? `صفحة المنهج: <b>${q.page}</b>` : `صفحة المنهج: <b>غير متاحة نصيًا هنا</b>`;
+  const citeText = q.cite ? `<div style="opacity:.9;margin-top:6px;">مرجع: ${q.cite}</div>` : "";
+  const noteText = q.note ? `<div style="opacity:.85;margin-top:6px;">ملاحظة: ${escapeHtml(q.note)}</div>` : "";
 
-    resultEl.innerHTML = `
-      <div style="text-align:center; line-height:2;">
-        <h2>الدرجة النهائية</h2>
-        <h1>${score} / ${questions.length}</h1>
-        <h3>${percent}%</h3>
-        <button id="restartBtn" style="padding:10px 16px; border-radius:8px; border:none; cursor:pointer;">
-          إعادة الاختبار
-        </button>
+  setResult(`
+    <div style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)">
+      <div style="font-size:1.05rem;"><b>درجتك الآن:</b> ${score} / ${questions.length}</div>
+      <div style="margin-top:6px;"><b>النتيجة:</b> ${isCorrect ? "✅ إجابة صحيحة" : "❌ إجابة خاطئة"}</div>
+      <div style="margin-top:10px;"><b>التصحيح:</b> الإجابة الصحيحة هي: <b>${escapeHtml(q.choices[q.correct])}</b></div>
+      <div style="margin-top:10px;"><b>الشرح:</b> ${escapeHtml(q.explain)}</div>
+      <div style="margin-top:10px;">${pageText}</div>
+      ${citeText}
+      ${noteText}
+    </div>
+  `);
+
+  btnNext.disabled = false;
+  btnNext.textContent = current === questions.length - 1 ? "عرض النتيجة النهائية" : "السؤال التالي";
+}
+
+function showFinal() {
+  clearAnswers();
+  elQuestion.innerHTML = `<b>انتهى الاختبار</b>`;
+  setResult(`
+    <div style="padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)">
+      <div style="font-size:1.1rem;"><b>الدرجة النهائية:</b> ${score} / ${questions.length}</div>
+      <div style="margin-top:6px;"><b>رمز الجلسة (بدون اسم):</b> ${sessionCode}</div>
+      <div style="margin-top:10px;opacity:.9;">يمكنك أخذ لقطة شاشة وإرسالها كإثبات (بدون اسم).</div>
+      <div style="margin-top:12px;">
+        <button id="restartBtn" style="
+          padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.18);
+          background:rgba(255,255,255,.10);color:#fff;cursor:pointer;
+        ">إعادة الاختبار</button>
       </div>
-    `;
+    </div>
+  `);
 
-    document.getElementById("restartBtn").onclick = function () {
+  const restartBtn = document.getElementById("restartBtn");
+  if (restartBtn) {
+    restartBtn.addEventListener("click", () => {
       current = 0;
       score = 0;
-      nextBtn.style.display = "inline-block";
-      nextBtn.disabled = false;
-      loadQuestion();
-    };
+      renderQuestion();
+    });
   }
+}
 
-  loadQuestion();
+btnNext?.addEventListener("click", () => {
+  if (current === questions.length - 1) {
+    showFinal();
+    return;
+  }
+  current++;
+  renderQuestion();
 });
+
+// ====== مساعدات ======
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+// تشغيل أول سؤال
+renderQuestion();
