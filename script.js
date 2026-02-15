@@ -1,126 +1,127 @@
 // =========================================
-// Quiz (17 MCQ) - Programming Basics
+// Quiz (10 Questions) - MCQ/TF + Written (model answer)
 // Instant correction + SCORE FIRST
+// Auto-score for Q1-7 only
 // =========================================
 
 const questions = [
   {
-    question: "1) ما المقصود بلغات البرمجة؟",
+    type: "mcq",
+    question: "السؤال الأول (اختيار من متعدد)\nما المقصود بالخوارزمية؟",
     answers: [
-      "لغة يفهمها الإنسان فقط",
-      "لغة للتواصل بين المبرمج والحاسب",
-      "لغة خاصة بالأجهزة فقط",
-      "لغة لتخزين البيانات فقط"
+      "لغة تتكون من 0 و1",
+      "سلسلة من الخطوات المنظمة لحل مشكلة",
+      "جهاز يقوم بالمعالجة",
+      "برنامج مكتوب بلغة الآلة"
     ],
     correct: 1,
-    explanation: "لغات البرمجة وسيلة تواصل بين المبرمج والحاسب لكتابة الأوامر وتنفيذها."
+    explanation: "الخوارزمية هي خطوات مرتبة ومنظمة لحل مشكلة."
   },
   {
-    question: "2) ما هي اللغة التي يفهمها الحاسب مباشرة؟",
-    answers: ["لغة التجميع", "لغة الآلة", "اللغة عالية المستوى", "لغة بايثون"],
+    type: "mcq",
+    question: "السؤال الثاني (اختيار من متعدد)\nأي من التالي يُعد من مكونات الحاسب الرئيسية كما وردت في المقرر؟",
+    answers: [
+      "برنامج Word",
+      "التخزين والاسترجاع (Memory & Storage)",
+      "متصفح الإنترنت",
+      "ملف نصي محفوظ"
+    ],
     correct: 1,
-    explanation: "الحاسب يفهم لغة الآلة مباشرة."
+    explanation: "من المكونات/الوظائف الأساسية: التخزين والاسترجاع (Memory/Storage)."
   },
   {
-    question: "3) تتكون لغة الآلة من:",
-    answers: ["حروف وأرقام", "رموز خاصة", "0 و 1", "أوامر إنجليزية"],
-    correct: 2,
+    type: "tf",
+    question: "السؤال الثالث (صح أو خطأ)\nلغة الآلة تتكون من الرمزين 0 و1 فقط.",
+    answers: ["صح", "خطأ"],
+    correct: 0,
     explanation: "لغة الآلة ثنائية (0/1)."
   },
   {
-    question: "4) أي من التالي يُعد من لغات البرمجة عالية المستوى؟",
-    answers: ["Assembly", "Machine Language", "Python", "Binary"],
-    correct: 2,
-    explanation: "بايثون لغة عالية المستوى."
+    type: "mcq",
+    question: "السؤال الرابع (اختيار من متعدد)\nأي من التالي يُمثل الفرق الصحيح بين المفسّر والمترجم؟",
+    answers: [
+      "المترجم يترجم البرنامج كاملاً ثم ينفذه",
+      "المفسّر يترجم البرنامج كاملاً دفعة واحدة",
+      "لا يوجد فرق بينهما",
+      "المفسّر لا يحول إلى لغة الآلة"
+    ],
+    correct: 0,
+    explanation: "Compiler يترجم البرنامج بالكامل، بينما Interpreter ينفذ سطرًا بسطر."
   },
   {
-    question: "5) أي أداة تُستخدم لترجمة البرنامج كاملًا دفعة واحدة؟",
-    answers: ["Interpreter", "Compiler", "Assembler", "Debugger"],
+    type: "mcq",
+    question: "السؤال الخامس (اختيار من متعدد)\nأي من التالي يُعد من أنماط بناء البرامج الأساسية؟",
+    answers: ["التسلسل", "الشرط", "التكرار", "جميع ما سبق"],
+    correct: 3,
+    explanation: "أنماط بناء البرامج الأساسية: التسلسل + الشرط + التكرار."
+  },
+  {
+    type: "mcq",
+    question: "السؤال السادس (اختيار من متعدد)\nأي من الأخطاء التالية يحدث عند كتابة كلمة print بهذه الطريقة: primt",
+    answers: ["NameError", "SyntaxError", "Logical Error", "TypeError"],
     correct: 1,
-    explanation: "Compiler يترجم البرنامج كاملًا دفعة واحدة."
+    explanation: "في سياق المقرر، المثال primt بدل print يُعد خطأً نحويًا SyntaxError."
   },
   {
-    question: "6) أي أداة تقوم بتنفيذ البرنامج سطرًا سطرًا؟",
-    answers: ["Compiler", "Assembler", "Interpreter", "Linker"],
-    correct: 2,
-    explanation: "Interpreter ينفذ ويترجم سطرًا سطرًا."
+    type: "tf",
+    question: "السؤال السابع (صح أو خطأ)\nبايثون تميز بين الأحرف الكبيرة والصغيرة في أسماء المتغيرات.",
+    answers: ["صح", "خطأ"],
+    correct: 0,
+    explanation: "Python حساسة لحالة الأحرف (Case-sensitive)."
+  },
+
+  // Written questions (not auto-graded)
+  {
+    type: "written",
+    question: "السؤال الثامن (سؤال تطبيقي)\nاكتب سطر برمجي بلغة بايثون يطبع العبارة التالية:\nمرحباً بك في عالم بايثون",
+    modelAnswer: `print("مرحباً بك في عالم بايثون")`,
+    tips: "استخدم الدالة print مع نص داخل علامات اقتباس."
   },
   {
-    question: "7) لغة التجميع (Assembly) تتميز بأنها:",
-    answers: ["قريبة من لغة الإنسان", "قريبة من لغة الآلة", "لا تحتاج مترجم", "لا تستخدم أوامر"],
-    correct: 1,
-    explanation: "Assembly أقرب للآلة من اللغات عالية المستوى."
+    type: "written",
+    question: "السؤال التاسع (سؤال تطبيقي)\nاكتب برنامجًا بسيطًا يطلب من المستخدم إدخال اسمه، ثم يطبع رسالة ترحيب به.",
+    modelAnswer:
+`name = input("أدخل اسمك: ")
+print("مرحباً " + name)`,
+    tips: "استخدم input لقراءة الاسم، ثم اطبع رسالة ترحيب."
   },
   {
-    question: "8) من مكونات الحاسب الأساسية:",
-    answers: ["المعالج فقط", "الذاكرة فقط", "الإدخال والمعالجة والإخراج", "البرامج فقط"],
-    correct: 2,
-    explanation: "من الوظائف الأساسية: إدخال ومعالجة وإخراج (ومعها غالبًا التخزين)."
-  },
-  {
-    question: "9) أي مما يلي يُعد من وحدات الإدخال؟",
-    answers: ["الشاشة", "الطابعة", "لوحة المفاتيح", "السماعات"],
-    correct: 2,
-    explanation: "لوحة المفاتيح جهاز إدخال."
-  },
-  {
-    question: "10) وظيفة وحدة المعالجة المركزية (CPU) هي:",
-    answers: ["إدخال البيانات", "تخزين البيانات", "تنفيذ الأوامر", "عرض النتائج"],
-    correct: 2,
-    explanation: "CPU ينفذ التعليمات والأوامر."
-  },
-  {
-    question: "11) الذاكرة التي تفقد محتواها عند انقطاع الكهرباء هي:",
-    answers: ["ROM", "RAM", "Hard Disk", "USB"],
-    correct: 1,
-    explanation: "RAM ذاكرة مؤقتة (Volatile) تفقد البيانات بانقطاع الكهرباء."
-  },
-  {
-    question: "12) من مهام الحاسب:",
-    answers: ["المعالجة فقط", "التخزين فقط", "الإدخال فقط", "الإدخال والمعالجة والتخزين"],
-    correct: 3,
-    explanation: "الحاسب يقوم بالإدخال والمعالجة والتخزين (وغالبًا الإخراج أيضًا)."
-  },
-  {
-    question: "13) ما المقصود بالخوارزمية؟",
-    answers: ["لغة برمجة", "جهاز حاسب", "سلسلة خطوات لحل مشكلة", "برنامج جاهز"],
-    correct: 2,
-    explanation: "الخوارزمية خطوات مرتبة لحل مشكلة."
-  },
-  {
-    question: "14) أي من التالي يُعد من المكونات الأساسية للبرامج؟",
-    answers: ["الشرط", "التكرار", "المدخلات والمخرجات", "جميع ما سبق"],
-    correct: 3,
-    explanation: "الشرط والتكرار والمدخلات/المخرجات كلها عناصر أساسية."
-  },
-  {
-    question: "15) من أسباب اختيار لغة بايثون:",
-    answers: ["صعوبة تعلمها", "قلة استخدامها", "بساطة قواعدها", "تعمل على نظام واحد"],
-    correct: 2,
-    explanation: "بايثون مشهورة ببساطة قواعدها وسهولة تعلمها."
-  },
-  {
-    question: "16) تعمل لغة بايثون على أنظمة التشغيل:",
-    answers: ["ويندوز فقط", "لينكس فقط", "ماك فقط", "جميع أنظمة التشغيل"],
-    correct: 3,
-    explanation: "بايثون تعمل على Windows وLinux وmacOS وغيرها."
-  },
-  {
-    question: "17) من أشهر الشركات التي تستخدم بايثون:",
-    answers: ["Google", "NASA", "Microsoft", "جميع ما سبق"],
-    correct: 3,
-    explanation: "عدة شركات/جهات كبيرة تستخدم بايثون، ومنها المذكور."
+    type: "written",
+    question: "السؤال العاشر (سؤال مقالي قصير)\nاذكر سببين من أسباب انتشار لغة بايثون واستخدامها الواسع.",
+    modelAnswer:
+`- سهلة التعلم وبسيطة القواعد.
+- تستخدم في مجالات كثيرة مثل: تحليل البيانات والذكاء الاصطناعي وتطوير الويب، وتعمل على عدة أنظمة تشغيل.`,
+    tips: "اكتب سببين فقط بشكل واضح."
   }
 ];
 
+// ---- State ----
 let currentQuestion = 0;
-let score = 0;
+let score = 0;            // auto-graded score (Q1-7)
+let autoTotal = 0;        // number of auto-graded questions
 let answered = false;
 
+// Count auto-graded questions
+autoTotal = questions.filter(q => q.type === "mcq" || q.type === "tf").length;
+
+// ---- Elements ----
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 const resultEl = document.getElementById("result");
 const nextBtn = document.getElementById("nextBtn");
+
+// ---- Helpers ----
+function showScoreHeader(extra = "") {
+  resultEl.innerHTML = `
+    <div style="text-align:right;">
+      <strong>الدرجة:</strong> ${score} / ${autoTotal}
+      <div style="opacity:.8; margin-top:4px; font-size:14px;">
+        (الدرجة تُحسب للأسئلة 1–7 فقط، والأسئلة 8–10 كتابية)
+      </div>
+    </div>
+    ${extra ? `<div style="text-align:right; margin-top:8px;">${extra}</div>` : ""}
+  `;
+}
 
 function loadQuestion() {
   answered = false;
@@ -130,26 +131,51 @@ function loadQuestion() {
   const q = questions[currentQuestion];
   questionEl.innerText = q.question;
 
-  // قبل الإجابة: عرض الدرجة الحالية (اختياري)
-  resultEl.innerHTML = `
-    <div style="text-align:right;">
-      <strong>الدرجة:</strong> ${score} / ${questions.length}
-    </div>
-    <div style="text-align:right; margin-top:6px;">
-      اختر إجابة لعرض التصحيح.
-    </div>
-  `;
+  if (q.type === "mcq" || q.type === "tf") {
+    showScoreHeader("اختر إجابة لعرض التصحيح.");
 
-  q.answers.forEach((answer, index) => {
-    const btn = document.createElement("button");
-    btn.innerText = answer;
-    btn.classList.add("answer-btn");
-    btn.onclick = () => checkAnswer(index);
-    answersEl.appendChild(btn);
-  });
+    q.answers.forEach((answer, index) => {
+      const btn = document.createElement("button");
+      btn.innerText = answer;
+      btn.classList.add("answer-btn");
+      btn.onclick = () => checkAutoAnswer(index);
+      answersEl.appendChild(btn);
+    });
+
+  } else if (q.type === "written") {
+    showScoreHeader("اكتب إجابتك ثم اضغط (عرض الإجابة النموذجية).");
+
+    const textarea = document.createElement("textarea");
+    textarea.id = "writtenAnswer";
+    textarea.placeholder = "اكتب إجابتك هنا...";
+    textarea.style.width = "100%";
+    textarea.style.height = "110px";
+    textarea.style.padding = "10px";
+    textarea.style.borderRadius = "8px";
+    textarea.style.border = "1px solid rgba(255,255,255,.2)";
+    textarea.style.background = "#0f172a";
+    textarea.style.color = "white";
+    textarea.style.fontSize = "15px";
+    textarea.style.resize = "vertical";
+    answersEl.appendChild(textarea);
+
+    const btnShow = document.createElement("button");
+    btnShow.innerText = "عرض الإجابة النموذجية";
+    btnShow.style.marginTop = "10px";
+    btnShow.style.background = "#2563eb";
+    btnShow.style.color = "white";
+    btnShow.style.border = "none";
+    btnShow.style.padding = "10px 14px";
+    btnShow.style.borderRadius = "8px";
+    btnShow.style.cursor = "pointer";
+    btnShow.onclick = () => showModelAnswer();
+    answersEl.appendChild(btnShow);
+
+    nextBtn.disabled = false; // allow next even without grading
+  }
 }
 
-function checkAnswer(selectedIndex) {
+function checkAutoAnswer(selectedIndex) {
   if (answered) return;
   answered = true;
 
@@ -166,11 +192,14 @@ function checkAnswer(selectedIndex) {
   const isCorrect = selectedIndex === correctIndex;
   if (isCorrect) score++;
 
-  // ✅ المطلوب: الدرجة أولًا عند التصحيح
+  // ✅ SCORE FIRST
   resultEl.innerHTML = `
     <div style="text-align:right; line-height:1.9;">
       <div style="font-size:18px; margin-bottom:8px;">
-        <strong>الدرجة:</strong> ${score} / ${questions.length}
+        <strong>الدرجة:</strong> ${score} / ${autoTotal}
+        <div style="opacity:.8; margin-top:4px; font-size:14px;">
+          (الدرجة تُحسب للأسئلة 1–7 فقط، والأسئلة 8–10 كتابية)
+        </div>
       </div>
       <div style="margin-bottom:6px;">
         ${isCorrect ? "إجابة صحيحة ✅" : "إجابة خاطئة ❌"}
@@ -181,6 +210,24 @@ function checkAnswer(selectedIndex) {
   `;
 
   nextBtn.disabled = false;
+}
+
+function showModelAnswer() {
+  const q = questions[currentQuestion];
+  resultEl.innerHTML = `
+    <div style="text-align:right; line-height:1.9;">
+      <div style="font-size:18px; margin-bottom:8px;">
+        <strong>الدرجة:</strong> ${score} / ${autoTotal}
+        <div style="opacity:.8; margin-top:4px; font-size:14px;">
+          (الدرجة تُحسب للأسئلة 1–7 فقط، والأسئلة 8–10 كتابية)
+        </div>
+      </div>
+      <div style="margin-bottom:6px;"><strong>ملاحظة:</strong> هذا سؤال كتابي (بدون تصحيح آلي).</div>
+      <div><strong>نصيحة:</strong> ${q.tips}</div>
+      <div style="margin-top:10px;"><strong>الإجابة النموذجية:</strong></div>
+      <pre style="background:#0b1220; padding:10px; border-radius:8px; overflow:auto; border:1px solid rgba(255,255,255,.12);">${q.modelAnswer}</pre>
+    </div>
+  `;
 }
 
 nextBtn.onclick = () => {
@@ -197,15 +244,18 @@ function showFinalResult() {
   answersEl.innerHTML = "";
   nextBtn.style.display = "none";
 
-  const percent = Math.round((score / questions.length) * 100);
+  const percent = Math.round((score / autoTotal) * 100);
 
   resultEl.innerHTML = `
     <div style="text-align:center; line-height:2;">
-      <h2>الدرجة النهائية</h2>
-      <h1>${score} / ${questions.length}</h1>
+      <h2>الدرجة النهائية (للأسئلة 1–7)</h2>
+      <h1>${score} / ${autoTotal}</h1>
       <h3>${percent}%</h3>
+      <div style="opacity:.85; font-size:14px; margin-top:6px;">
+        الأسئلة 8–10 كتابية: راجع إجاباتك مع الإجابات النموذجية.
+      </div>
       <button id="restartBtn"
-        style="background:#16a34a; color:#fff; padding:10px 16px; border-radius:8px; border:none; cursor:pointer;">
+        style="background:#16a34a; color:#fff; padding:10px 16px; border-radius:8px; border:none; cursor:pointer; margin-top:10px;">
         إعادة الاختبار
       </button>
     </div>
